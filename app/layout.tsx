@@ -32,8 +32,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        Coming from the main Layout... 
+        NavBar 
         {children}
+        Footer
       </body>
     </html>
   );
