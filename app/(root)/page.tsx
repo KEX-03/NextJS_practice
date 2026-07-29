@@ -12,9 +12,14 @@ function Home() {
           </h1>
           <h2 className="text-3xl font-semibold mt-8">
             <Link href="/dashboard">
-              Click Here
+              Click Here to visit Dashboard
             </Link>
-          </h2>  
+          </h2>
+          <h2 className="text-3xl font-semibold mt-8">
+            <Link href="/about">
+              Click Here to visit About
+            </Link>
+          </h2>              
         </div>        
       </div>
     </main>

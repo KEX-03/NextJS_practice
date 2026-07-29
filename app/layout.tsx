@@ -32,7 +32,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="h-screen flex flex-col overflow-hidden">
-        NavBar 
         {children}
         Footer
       </body>
