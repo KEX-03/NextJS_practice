@@ -1,6 +1,9 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Schibsted_Grotesk, Martian_Mono } from 'next/font/google';
+import { Schibsted_Grotesk, Martian_Mono, Geist } from 'next/font/google';
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const schibstedGrotesk = Schibsted_Grotesk({
   variable: "--font-schibsted-grotesk",
@@ -38,7 +41,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={cn("font-sans", geist.variable)}>
       <body className={`${schibstedGrotesk.variable} ${martianMono.variable} min-h-screen antialiased`}>
         {children}
         Footer
