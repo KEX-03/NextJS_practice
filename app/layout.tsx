@@ -46,17 +46,13 @@ export default function RootLayout({
         <LightRays
             raysOrigin="top-center-offset"
             raysColor="#5dfeca"
-            raysSpeed={1}
-            lightSpread={0.5}
-            rayLength={3}
+            raysSpeed={0.5}
+            lightSpread={0.9}
+            rayLength={1.5}
             followMouse={true}
-            mouseInfluence={0.1}
+            mouseInfluence={0.03}
             noiseAmount={0}
-            distortion={0}
-            className="custom-rays"
-            pulsating={false}
-            fadeDistance={1}
-            saturation={1}
+            distortion={0.01}
         />
         {children}
         Footer
