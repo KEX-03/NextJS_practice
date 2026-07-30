@@ -39,7 +39,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${schibstedGrotesk.variable} ${martianMono.variable} antialiased`}>
+      <body className={`${schibstedGrotesk.variable} ${martianMono.variable} min-h-screen antialiased`}>
         {children}
         Footer
       </body>
