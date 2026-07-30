@@ -1,8 +1,16 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Schibsted_Grotesk, Martian_Mono } from 'next/font/google';
 
-const inter = Inter({ subsets: ['latin'] });
+const schibstedGrotesk = Schibsted_Grotesk({
+  variable: "--font-schibsted-grotesk",
+  subsets: ["latin"]
+})
+
+const martianMono = Martian_Mono({
+  variable: "--font-martian-mono",
+  subsets: ["latin"]
+})
 
 export const metadata: Metadata = {
   title: 'DevEvent',
