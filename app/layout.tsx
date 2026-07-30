@@ -43,10 +43,9 @@ export default function RootLayout({
   return (
     <html lang="en" >
       <body className={`${schibstedGrotesk.variable} ${martianMono.variable} min-h-screen antialiased`}>
-      <div style={{ width: '100%', height: '600px', position: 'relative' }}>
         <LightRays
-            raysOrigin="top-center"
-            raysColor="#ffffff"
+            raysOrigin="top-center-offset"
+            raysColor="#00ffff"
             raysSpeed={1}
             lightSpread={0.5}
             rayLength={3}
@@ -59,7 +58,6 @@ export default function RootLayout({
             fadeDistance={1}
             saturation={1}
         />
-      </div>
         {children}
         Footer
       </body>
