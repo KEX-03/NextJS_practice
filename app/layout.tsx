@@ -45,7 +45,7 @@ export default function RootLayout({
       <body className={`${schibstedGrotesk.variable} ${martianMono.variable} min-h-screen antialiased`}>
         <LightRays
             raysOrigin="top-center-offset"
-            raysColor="#00ffff"
+            raysColor="#5dfeca"
             raysSpeed={1}
             lightSpread={0.5}
             rayLength={3}
