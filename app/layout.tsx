@@ -39,7 +39,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="h-screen flex flex-col overflow-hidden">
+      <body className={`${schibstedGrotesk.variable} ${martianMono.variable} antialiased`}>
         {children}
         Footer
       </body>
