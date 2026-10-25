@@ -1,6 +1,7 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { Schibsted_Grotesk, Martian_Mono, Geist } from 'next/font/google';
+import QueryProvider from '@/components/QueryProvider';
 import LightRays from "@/components/LightRays";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
@@ -56,7 +57,9 @@ export default function RootLayout({
             distortion={0.01}
         />
       </div>
-      {children}
+      <QueryProvider>
+        {children}
+      </QueryProvider>
       Footer
       </body>
     </html>

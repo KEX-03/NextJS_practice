@@ -1,25 +1,28 @@
 "use client"
-import { useState, useEffect } from "react"
+import { useQuery } from "@tanstack/react-query"
 
 type User = {id: number, name: string}
 
+async function fetchUsers(): Promise<User[]> {
+  const res = await fetch("https://jsonplaceholder.typicode.com/users")
+  if (!res.ok) throw new Error("Failed to fetch users")
+  return res.json()
+}
+
 function Users() {
-  const [users, setUsers] = useState<User[]>([])
-  const [loading, setLoading] = useState(true)
+  const {data: users, isPending, isError, error} = useQuery({
+    queryKey: ["users"],
+    queryFn: fetchUsers
+  })
 
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then(res => res.json())
-      .then(setUsers)
-      .finally(() => setLoading(false))
-  }, [])
-
-  if (loading) return (
+  if (isError) return <p>Error: {error.message}</p>
+  if (isPending) return (
     <div>
       <h1>Dashboard Users</h1>
       <p>Loading...</p>
     </div>
   )
+
   return (
     <div>
       <h1>Dashboard Users</h1>
