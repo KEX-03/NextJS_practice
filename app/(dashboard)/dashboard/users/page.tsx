@@ -28,7 +28,9 @@ function Users() {
     </div>
   )
 
-  const results = users.filter(user => user.name.toLowerCase().includes(debouncedQuery.toLowerCase()))
+  const results = users.filter(user => 
+    user.name.toLowerCase().includes(debouncedQuery.toLowerCase())
+  )
 
   return (
     <div>
