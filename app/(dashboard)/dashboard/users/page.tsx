@@ -42,7 +42,7 @@ function Users() {
       />
 
       <ul className="mt-10">
-        {users.map(user => <li key={user.id}>{user.name}</li>)}
+        {results.map(user => <li key={user.id}>{user.name}</li>)}
       </ul>
 
       {results.length === 0 && <p>No users match "{debouncedQuery}"</p>}
