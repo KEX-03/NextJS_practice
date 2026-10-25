@@ -1,15 +1,30 @@
-import Link from "next/link"
+"use client"
+import { useState, useEffect } from "react"
 
-const Users = () => {
+type User = {id: number, name: string}
+
+function Users() {
+  const [users, setUsers] = useState<User[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then(res => res.json())
+      .then(setUsers)
+      .finally(() => setLoading(false))
+  }, [])
+
+  if (loading) return (
+    <div>
+      <h1>Dashboard Users</h1>
+      <p>Loading...</p>
+    </div>
+  )
   return (
     <div>
       <h1>Dashboard Users</h1>
-
       <ul className="mt-10">
-        <li><Link href="/dashboard/users/1">User 1</Link></li>
-        <li><Link href="/dashboard/users/2">User 2</Link></li>
-        <li><Link href="/dashboard/users/3">User 3</Link></li>
-        <li><Link href="/dashboard/users/4">User 4</Link></li>
+        {users.map(user => <li key={user.id}>{user.name}</li>)}
       </ul>
     </div>
   )

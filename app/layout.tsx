@@ -43,6 +43,7 @@ export default function RootLayout({
   return (
     <html lang="en" >
       <body className={`${schibstedGrotesk.variable} ${martianMono.variable} min-h-screen antialiased`}>
+      <div className="absolute inset-0 top-0 z-[-1] min-h-screen">
         <LightRays
             raysOrigin="top-center-offset"
             raysColor="#5dfeca"
@@ -54,8 +55,9 @@ export default function RootLayout({
             noiseAmount={0}
             distortion={0.01}
         />
-        {children}
-        Footer
+      </div>
+      {children}
+      Footer
       </body>
     </html>
   );
