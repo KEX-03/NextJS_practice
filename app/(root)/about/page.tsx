@@ -1,5 +1,5 @@
-const page = () => {
-  throw new Error('Something went wrong')
+function About() {
+
   return (
     <div>
         <h1>About</h1>
@@ -7,4 +7,4 @@ const page = () => {
   )
 }
 
-export default page
+export default About
