@@ -1,8 +1,10 @@
 "use client"
-import { useState, useEffect } from "react"
+import {  useRef } from "react"
 import { useQuery } from "@tanstack/react-query"
+import { useVirtualizer } from "@tanstack/react-virtual"
+import Image from "next/image"
 
-interface Photo {id: number, albumId: number, title: string}
+interface Photo {id: number, albumId: number, title: string, thumbnailUrl: string}
 
 async function fetchPhotos(): Promise <Photo[]> {
     const res = await fetch("https://jsonplaceholder.typicode.com/photos")
@@ -11,17 +13,56 @@ async function fetchPhotos(): Promise <Photo[]> {
 }
 
 function Photos() {
+    const parentRef = useRef<HTMLDivElement>(null)
     const { data: photos, isPending, isError } = useQuery({
         queryKey: ["photos"],
         queryFn: fetchPhotos
+    })
+
+    const virtualizer = useVirtualizer({
+        count: photos?.length ?? 0,
+        getScrollElement: () => parentRef.current,
+        estimateSize: () => 100,
+        overscan: 5
     })
 
     if (isError) return <p>Something went wrong</p>
     if (isPending) return <p>Loading...</p>
 
     return (
-        <div>
-            {photos.length}
+        <div
+            ref={parentRef}
+            style={{
+                height: 600,
+                overflow: "auto"
+            }}>
+                <div 
+                    className="relative w-full"
+                    style={{
+                        height: virtualizer.getTotalSize()
+                    }}>
+                    <ul className="flex flex-col items-center gap-4">
+                        {virtualizer.getVirtualItems().map((row) => {
+                            const photo = photos[row.index]
+                            return (
+                                <li 
+                                    className="absolute top-0 left-0 w-full"
+                                    key={row.index}
+                                    style={{
+                                        height: row.size,
+                                        transform: `translateY(${row.start}px)`
+                                    }}>
+                                        <Image 
+                                            src={photo.thumbnailUrl}
+                                            alt={photo.title}
+                                            width={100}
+                                            height={100}
+                                        />
+                                </li>
+                            )
+                        })}
+                    </ul>
+            </div>
         </div>
     )
 }
