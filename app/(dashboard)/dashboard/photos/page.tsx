@@ -1,5 +1,5 @@
 "use client"
-import {  useRef } from "react"
+import { useRef } from "react"
 import { useQuery } from "@tanstack/react-query"
 import { useVirtualizer } from "@tanstack/react-virtual"
 import Image from "next/image"
@@ -22,7 +22,7 @@ function Photos() {
     const virtualizer = useVirtualizer({
         count: photos?.length ?? 0,
         getScrollElement: () => parentRef.current,
-        estimateSize: () => 100,
+        estimateSize: () => 116,
         overscan: 5
     })
 
@@ -41,18 +41,19 @@ function Photos() {
                     style={{
                         height: virtualizer.getTotalSize()
                     }}>
-                    <ul className="flex flex-col items-center gap-4">
+                    <ul>
                         {virtualizer.getVirtualItems().map((row) => {
                             const photo = photos[row.index]
                             return (
                                 <li 
-                                    className="absolute top-0 left-0 w-full"
+                                    className="absolute top-0 left-0 w-full flex items-center justify-center"
                                     key={row.index}
                                     style={{
                                         height: row.size,
                                         transform: `translateY(${row.start}px)`
                                     }}>
-                                        <Image 
+                                        <Image
+                                            className="rounded-lg"
                                             src={photo.thumbnailUrl}
                                             alt={photo.title}
                                             width={100}
